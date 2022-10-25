@@ -7,7 +7,7 @@
 
 ## Run
 
-- Open Visual Studio and run app TimeChimp.Backend.Assessment
+- Open your C# editor of choice and run app TimeChimp.Backend.Assessment
 
 ## Assessment
 
@@ -25,4 +25,4 @@ However; make sure there is enough code (written by yourself) to explain your de
 
 ### Questions or need some help with the setup?
 
-Please feel free to contact [Jevgeni Rumjantsev](mailto:j.rumjantsev@timechimp.com?subject=TimeChimp%20Backend%20Assessment) or [Dennis Spaan](mailto:d.spaan@timechimp.com?subject=TimeChimp%20Backend%20Assessment)
+Please feel free to contact [Dennis Spaan](mailto:d.spaan@timechimp.com?subject=TimeChimp%20Backend%20Assessment).
