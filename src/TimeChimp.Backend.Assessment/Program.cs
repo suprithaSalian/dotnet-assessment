@@ -1,7 +1,9 @@
 ﻿using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Serilog;
 using Serilog.Formatting.Json;
+using TimeChimp.Backend.Assessment.Repository;
 
 namespace TimeChimp.Backend.Assessment
 {
@@ -9,7 +11,11 @@ namespace TimeChimp.Backend.Assessment
     {
         public static void Main(string[] args)
         {
-            CreateHostBuilder(args).Build().Run();
+            var host = CreateHostBuilder(args).Build();
+            using AsyncServiceScope asyncScope = host.Services.CreateAsyncScope();
+            var _dbContext = asyncScope.ServiceProvider.GetRequiredService<RssDbContext>();
+            _dbContext.Database.EnsureCreated();
+            host.Run();
         }
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
@@ -20,7 +26,7 @@ namespace TimeChimp.Backend.Assessment
                         {
                             // Set properties and call methods on options
                         })
-                        .UseSerilog((context, config) => 
+                        .UseSerilog((context, config) =>
                         {
                             config.ReadFrom.Configuration(context.Configuration)
                                   .WriteTo.Console(new JsonFormatter(renderMessage: true))
